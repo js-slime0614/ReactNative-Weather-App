@@ -20,6 +20,7 @@ export default function App() {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=alerts&appid=${API_KEY}&units=metric`
       );
+    console.log(response);
     const json = await response.json();
     setDays(json.daily);
   };
