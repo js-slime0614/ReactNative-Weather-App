@@ -2,7 +2,7 @@ import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Dimensions, ActivityIndicator } from "react-native";
 
-const API_KEY = "2f48ef9ab67108c16cc0fb7cc330fa8e";
+const API_KEY = "40c06fef87d69e02b674734ea0fb2cea";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function App() {
@@ -18,10 +18,10 @@ export default function App() {
     const location = await Location.reverseGeocodeAsync({latitude, longitude}, {useGoogleMaps:false});
     setCity(location[0].city);
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=alerts&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=alerts&appid=${API_KEY}&units=metric`
       );
-    console.log(response);
     const json = await response.json();
+    console.log(json);
     setDays(json.daily);
   };
   useEffect(() => {
